@@ -24,6 +24,17 @@ module.exports = {
     `gatsby-plugin-sharp`,
     `gatsby-plugin-layout`,
     {
+      resolve: `gatsby-plugin-google-fonts`,
+      options: {
+        fonts: [
+          `limelight`,
+          `source sans pro\:300,400,400i,700`, // you can also specify font weights and styles
+          'UnifrakturMaguntia',
+        ],
+        display: 'swap'
+      },
+    },
+    {
       resolve: `gatsby-plugin-manifest`,
       options: {
         name: `gatsby-starter-default`,

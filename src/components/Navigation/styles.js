@@ -32,10 +32,10 @@ export const LogoWrapper = styled.div`
 
 export const Container = styled.div`
   display: flex;
-  justify-content: space-around;
+  justify-content: space-between;
   align-items: baseline;
-  padding: 1.45rem;
-  margin: 0 auto;
+  /* padding: 1.45rem; */
+  margin: 0 0;
   width: 100%;
 `
 
@@ -44,6 +44,7 @@ export const MenuLink = styled(Link)`
   text-decoration: none;
   font-size: 2rem;
   font-weight: bold;
+  padding: 0px 50px 50px 50px;
 
   @media (max-width: ${breakpoints.s}px){
     font-size: 1.4rem
