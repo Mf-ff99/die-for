@@ -18,7 +18,7 @@ import {
 const ProductPage = ({ data }) => {
   const product = data.shopifyProduct
 const collection = data.shopifyCollection
-console.log(collection)
+// console.log(collection)
   
   return (
     <>

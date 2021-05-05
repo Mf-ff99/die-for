@@ -1,6 +1,6 @@
 import React from 'react'
 import PropTypes from 'prop-types'
-import { StaticQuery, graphql,  useStaticQuery, Link } from 'gatsby'
+import { StaticQuery, graphql, useStaticQuery, Link } from 'gatsby'
 import styled from '@emotion/styled'
 
 import ContextProvider from '~/provider/ContextProvider'
@@ -18,7 +18,7 @@ const Layout = ({ children }) => {
   const data = useStaticQuery(
     graphql`
     {
-      allShopifyPage {
+      allShopifyProduct {
         nodes {
           title
           handle
@@ -35,37 +35,37 @@ const Layout = ({ children }) => {
       }
 
    `)
-  
+
   return (
     <ContextProvider>
       <GlobalStyle />
-   
-          <>
-            <Navigation siteTitle={data.site.siteMetadata.title} />
-            <Wrapper>
-              {children}
+
+      <>
+        <Navigation siteTitle={data.site.siteMetadata.title} />
+        <Wrapper>
+          {children}
 
 
-              <footer>
-             
+          <footer>
 
-<ul>
-                {data.allShopifyPage.nodes.map(({  title, handle }) => (
-          
-          <li><Link to={`/page/${handle}/`}>
-           {title}
-            </Link></li>
-          
-        ))}</ul>
+
+            <ul>
+              {data !== undefined ? data.allShopifyProduct.nodes.map(({ id }) => (
+
+                <li><Link to={`/page/${id}/`}>
+                  {id}
+                </Link></li>
+
+              )) : null}</ul>
 
 © {new Date().getFullYear()}, Built with
                 {` `}
-                <a href="https://www.gatsbyjs.org">Gatsby</a>
-              </footer>
-            </Wrapper>
-          </>
-    
-    
+            <a href="https://www.gatsbyjs.org">Gatsby</a>
+          </footer>
+        </Wrapper>
+      </>
+
+
     </ContextProvider>
   )
 }

@@ -19,10 +19,10 @@ const PolicyPage = ({ data })=> {
 export const query = graphql`
 query($handle: String!) {
     
-    shopifyPage(handle: { eq: $handle }) {
-    
+    shopifyProduct(handle: { eq: $handle }) {
+      handle
       title
-      body
+      description
     }
   }
   

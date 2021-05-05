@@ -7,6 +7,7 @@ exports.createPages = async ({ graphql, actions }) => {
       allShopifyProduct {
         edges {
           node {
+            title
             handle
             shopifyId
           }
@@ -14,18 +15,17 @@ exports.createPages = async ({ graphql, actions }) => {
       }
 
 
-      allShopifyPage {
-        nodes {
-          body
-          url
-          title
-          handle
+      allSitePage {
+        edges {
+          node {
+            id
+          }
         }
       }
 
     
 
-        allShopifyCollection {
+        shopifyCollection {
           nodes {
             title
             handle
@@ -36,8 +36,11 @@ exports.createPages = async ({ graphql, actions }) => {
     }
   `)
 
+  
+  // console.log(data)
+    
 
-   data.allShopifyProduct.edges.forEach(({ node }) => {
+   data !== undefined ? data.allShopifyProduct.edges.forEach(({ node }) => {
       createPage({
         path: `/product/${node.handle}/`,
         component: path.resolve(`./src/templates/ProductPage/index.js`),
@@ -48,12 +51,11 @@ exports.createPages = async ({ graphql, actions }) => {
           shopifyId: node.shopifyId
         },
       })
-    })
+    }) : null
 
 
 
-
- data.allShopifyPage.nodes.forEach((el) => {
+ data !== undedfined ? data.allShopifyPage.nodes.forEach((el) => {
     createPage({
       path: `/page/${el.handle}/`,
       component: path.resolve(`./src/templates/Pages/index.js`),
@@ -63,12 +65,12 @@ exports.createPages = async ({ graphql, actions }) => {
         handle: el.handle,
       },
     })
-  })
+  }) : null
 
 
 
 
-  data.allShopifyCollection.nodes.forEach(el => {
+  data !== undefine ? data.allShopifyCollection.nodes.forEach(el => {
     createPage({
       path: `/collection/${el.handle}/`,
       component: path.resolve(`./src/templates/Collection/index.js`),
@@ -78,7 +80,7 @@ exports.createPages = async ({ graphql, actions }) => {
         handle: el.handle,
       },
     })
-  })
+  }) : null
   
  
 

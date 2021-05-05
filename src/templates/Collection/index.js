@@ -11,7 +11,7 @@ import { Img } from '~/utils/styles'
 const CollectionPage = ({ data })=> {
     const collection = data.shopifyCollection
     const { store: {checkout} } = useContext(StoreContext)
-   console.log(collection.products)
+  //  console.log(collection.products)
 
 
     const getPrice = price => Intl.NumberFormat(undefined, {
